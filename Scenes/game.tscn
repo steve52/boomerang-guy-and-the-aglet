@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c4sol3auy4yn7"]
+
+[ext_resource type="PackedScene" uid="uid://du0xmkdwkcg8q" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://b3qvw8wgviqfs" path="res://Scenes/game.gd" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://cuselsv4h0gmx" path="res://Scenes/Enemies/ChargingEnemy.tscn" id="2_qxrlw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_80nbo"]
+vertices = PackedVector2Array(3064.5703, 1642.0234, -1239.9766, 1335.6875, -1236.0078, -924.8906, 2261.5938, -1254.25)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1246, -934, 2269, -1265, 3078, 1653, -1250, 1345)])
+
+[node name="Game" type="Node2D" unique_id=1147405228 node_paths=PackedStringArray("Player")]
+script = ExtResource("1_wrm1d")
+Player = NodePath("Player")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=62987133]
+navigation_polygon = SubResource("NavigationPolygon_80nbo")
+
+[node name="Player" parent="." unique_id=197361324 instance=ExtResource("1_ebmjs")]
+position = Vector2(141, 279)
+
+[node name="ChargingEnemy" parent="." unique_id=1342658842 instance=ExtResource("2_qxrlw")]
+position = Vector2(654, 380)

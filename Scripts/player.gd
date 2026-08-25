@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var Speed = 20
 const BOOMERANG = preload("uid://bgv7yok8kgxfo")
+
 var Walking = false
 var Rotate = 0
 

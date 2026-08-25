@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcgf02hhncb3f"
-path="res://.godot/imported/Boomerang Guy-Sheet.png-b73bc273d25774a6e254f3ca716f42a1.ctex"
+uid="uid://ca6bcy74c4wx4"
+path="res://.godot/imported/Bullet.png-01cfc6486bd6711d123faf51c40f38d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Boomerang Guy-Sheet.png"
-dest_files=["res://.godot/imported/Boomerang Guy-Sheet.png-b73bc273d25774a6e254f3ca716f42a1.ctex"]
+source_file="res://Assets/Bullet.png"
+dest_files=["res://.godot/imported/Bullet.png-01cfc6486bd6711d123faf51c40f38d2.ctex"]
 
 [params]
 
