@@ -26,6 +26,7 @@ func _physics_process(delta):
 		var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		var NewVelocity = delta * Speed * direction
 		position += NewVelocity
+	$Icon.rotation_degrees += 15
 
 
 

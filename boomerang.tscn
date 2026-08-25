@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bgv7yok8kgxfo"]
 
 [ext_resource type="Script" uid="uid://bs62wr8se15mj" path="res://boomerang.gd" id="1_420uo"]
-[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://icon.svg" id="1_oornc"]
+[ext_resource type="Texture2D" uid="uid://oqu7f1shyi16" path="res://Boomerang.png" id="2_420uo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymel3"]
-size = Vector2(60, 15)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nkeej"]
+radius = 16.0
 
 [node name="Boomerang" type="Area2D" unique_id=1988980179]
 collision_layer = 2
@@ -12,11 +12,10 @@ collision_mask = 5
 script = ExtResource("1_420uo")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1512811002]
-scale = Vector2(0.484375, 0.125)
-texture = ExtResource("1_oornc")
+texture = ExtResource("2_420uo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1352173643]
-shape = SubResource("RectangleShape2D_ymel3")
+shape = SubResource("CircleShape2D_nkeej")
 
 [node name="PathfindTimer" type="Timer" parent="." unique_id=1006091501]
 wait_time = 0.1
