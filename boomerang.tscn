@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bgv7yok8kgxfo"]
+
+[ext_resource type="Script" uid="uid://bs62wr8se15mj" path="res://boomerang.gd" id="1_420uo"]
+[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://icon.svg" id="1_oornc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ymel3"]
+size = Vector2(60, 15)
+
+[node name="Boomerang" type="Area2D" unique_id=1988980179]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_420uo")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1512811002]
+scale = Vector2(0.484375, 0.125)
+texture = ExtResource("1_oornc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1352173643]
+shape = SubResource("RectangleShape2D_ymel3")
+
+[node name="PathfindTimer" type="Timer" parent="." unique_id=1006091501]
+wait_time = 0.1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=55848060]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
