@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c4sol3auy4yn7"]
 
 [ext_resource type="PackedScene" uid="uid://du0xmkdwkcg8q" path="res://Scenes/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://b3qvw8wgviqfs" path="res://Scenes/game.gd" id="1_wrm1d"]
+[ext_resource type="Script" uid="uid://b3qvw8wgviqfs" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://cuselsv4h0gmx" path="res://Scenes/Enemies/ChargingEnemy.tscn" id="2_qxrlw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_80nbo"]

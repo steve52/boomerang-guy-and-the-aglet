@@ -52,3 +52,7 @@ func Attack():
 		Boomerang.position = position
 		Boomerang.Target = get_global_mouse_position()
 		Boomerang.Player = self
+
+
+func Hit(HitBy):
+	print("Dead")
