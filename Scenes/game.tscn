@@ -21,3 +21,9 @@ position = Vector2(141, 279)
 
 [node name="ChargingEnemy" parent="." unique_id=1342658842 instance=ExtResource("2_qxrlw")]
 position = Vector2(654, 380)
+
+[node name="ChargingEnemy2" parent="." unique_id=1072662666 instance=ExtResource("2_qxrlw")]
+position = Vector2(71, 489)
+
+[node name="ChargingEnemy3" parent="." unique_id=633694951 instance=ExtResource("2_qxrlw")]
+position = Vector2(621, 40)
