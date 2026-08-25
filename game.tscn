@@ -17,5 +17,5 @@ position = Vector2(387, 232)
 navigation_polygon = SubResource("NavigationPolygon_80nbo")
 
 [node name="EnemyBase" parent="." unique_id=1342658842 instance=ExtResource("2_e2o6t")]
-position = Vector2(1055, 494)
+position = Vector2(992, 243)
 ChargeDistance = 10.0

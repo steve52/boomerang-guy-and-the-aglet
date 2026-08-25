@@ -1,7 +1,6 @@
 extends Area2D
 
 
-
 var Player
 var Target
 var Speed = 800
@@ -12,7 +11,7 @@ var idkwhattocallititmakessureitdoesntinstantlygetdestroyed = false
 func _ready():
 	await get_tree().create_timer(.02).timeout
 	var tween = get_tree().create_tween()
-	var realtarget = position.direction_to(Target) * 500 + position
+	var realtarget = position.direction_to(Target) * 700 + position
 	var ETA = position.distance_to(realtarget) / Speed
 	tween.tween_property(self,"position",realtarget, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	await get_tree().create_timer(ETA-1).timeout

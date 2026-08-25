@@ -7,10 +7,8 @@ var Player
 
 func _ready():
 	Player = get_parent().get_child(0)
-	await get_tree().create_timer(1).timeout
-	Charge()
 
-func TakeDamage():
+func TakeDamage(Boomerang):
 	Health -= 1
 	if Health == 0:
 		Die()
@@ -36,3 +34,11 @@ func Charge():
 	var ETA = position.distance_to(TargetPosition) / (Speed * 1.5)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", TargetPosition, ETA).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+
+func Teleport(Target):
+	position = Target
+
+func Dash(Target):
+	var ETA = position.distance_to(Target) / (Speed)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", Target, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
