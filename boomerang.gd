@@ -12,9 +12,10 @@ var idkwhattocallititmakessureitdoesntinstantlygetdestroyed = false
 func _ready():
 	await get_tree().create_timer(.02).timeout
 	var tween = get_tree().create_tween()
-	var ETA = position.distance_to(Target) / Speed
-	tween.tween_property(self,"position",Target, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	await tween.finished
+	var realtarget = position.direction_to(Target) * 500 + position
+	var ETA = position.distance_to(realtarget) / Speed
+	tween.tween_property(self,"position",realtarget, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	await get_tree().create_timer(ETA-1).timeout
 	Returning = true
 	$PathfindTimer.start()
 	_on_pathfind_timer_timeout()

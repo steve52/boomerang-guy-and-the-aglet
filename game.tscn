@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c4sol3auy4yn7"]
 
 [ext_resource type="PackedScene" uid="uid://du0xmkdwkcg8q" path="res://player.tscn" id="1_80nbo"]
+[ext_resource type="PackedScene" uid="uid://blwptn62xtogp" path="res://enemy_base.tscn" id="2_e2o6t"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_80nbo"]
 vertices = PackedVector2Array(3064.5703, 1642.0234, -1239.9766, 1335.6875, -1236.0078, -924.8906, 2261.5938, -1254.25)
@@ -14,3 +15,7 @@ position = Vector2(387, 232)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=62987133]
 navigation_polygon = SubResource("NavigationPolygon_80nbo")
+
+[node name="EnemyBase" parent="." unique_id=1342658842 instance=ExtResource("2_e2o6t")]
+position = Vector2(1055, 494)
+ChargeDistance = 10.0
