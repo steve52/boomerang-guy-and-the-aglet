@@ -8,6 +8,12 @@ var Player
 func _ready():
 	Player = get_parent().Player
 
+func _physics_process(delta):
+	SpriteDirectionCheck()
+
+func SpriteDirectionCheck():
+	pass
+
 func TakeDamage(Boomerang):
 	Health -= 1
 	if Health == 0:

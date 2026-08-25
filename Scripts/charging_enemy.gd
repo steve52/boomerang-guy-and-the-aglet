@@ -6,6 +6,8 @@ func _ready():
 	super()
 	$ChargeTimer.start(3+randf_range(-1,1))
 
+func SpriteDirectionCheck():
+	$Icon.flip_h = true if Player.position.x > position.x else false
 
 func BeforeCharge():
 	var tween = get_tree().create_tween()

@@ -1,16 +1,15 @@
 [gd_scene format=3 uid="uid://cuselsv4h0gmx"]
 
 [ext_resource type="Script" uid="uid://jhutdunnxu6v" path="res://Scripts/charging_enemy.gd" id="1_ok547"]
-[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://Assets/icon.svg" id="2_44cbu"]
+[ext_resource type="Texture2D" uid="uid://bqee7a5wyho4f" path="res://Assets/ChargingSnake.png" id="2_ok547"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
-size = Vector2(61, 62)
+size = Vector2(37.5, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk0vl"]
-size = Vector2(66, 66)
+size = Vector2(39, 58)
 
 [node name="ChargingEnemy" type="CharacterBody2D" unique_id=1342658842]
-modulate = Color(1, 0.22644159, 0.30998963, 1)
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_ok547")
@@ -19,23 +18,23 @@ Speed = 400.0
 ChargeDistance = 6.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
-position = Vector2(0.5, 0)
+position = Vector2(1.25, -0.5)
 shape = SubResource("RectangleShape2D_qr4i2")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1940268398]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_44cbu")
+texture = ExtResource("2_ok547")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=437618089]
+[node name="HitDetection" type="Area2D" parent="." unique_id=437618089]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1667751045]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection" unique_id=1667751045]
+position = Vector2(1.5, -1)
 shape = SubResource("RectangleShape2D_uk0vl")
 
 [node name="ChargeTimer" type="Timer" parent="." unique_id=602379148]
 wait_time = 3.0
 one_shot = true
 
-[connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]
+[connection signal="area_entered" from="HitDetection" to="." method="TakeDamage"]
 [connection signal="timeout" from="ChargeTimer" to="." method="BeforeCharge"]
