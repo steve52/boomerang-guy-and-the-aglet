@@ -35,7 +35,7 @@ func ShootBullets(Bullets,direction):
 	bullets.Shoot()
 
 func BeforeCharge():
-	Charge()
+	pass
 
 func Charge():
 	var tween = get_tree().create_tween()
@@ -52,16 +52,17 @@ func AfterCharge():
 	pass
 
 func BeforeTeleport(Target):
-	Teleport(Target)
+	pass
 
 func Teleport(Target):
 	position = Target
+	AfterTeleport()
 
 func AfterTeleport():
 	pass
 
 func BeforeDash(Target):
-	Dash(Target)
+	pass
 
 func Dash(Target):
 	var ETA = position.distance_to(Target) / (Speed)
