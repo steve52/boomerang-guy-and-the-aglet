@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://d16f3v2leehim"]
+
+[ext_resource type="Script" uid="uid://b1otodreveq1k" path="res://Scripts/teleporting_enemy.gd" id="1_pm1up"]
+[ext_resource type="Texture2D" uid="uid://crctu8545s7to" path="res://Assets/DiggingMole-Sheet.png" id="2_pm1up"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
+size = Vector2(25, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7su5n"]
+atlas = ExtResource("2_pm1up")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnpf0"]
+atlas = ExtResource("2_pm1up")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7reh"]
+atlas = ExtResource("2_pm1up")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qr4i2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7su5n")
+}],
+"loop": 1,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnpf0")
+}],
+"loop": 1,
+"name": &"Digging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7reh")
+}],
+"loop": 1,
+"name": &"Front",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk0vl"]
+size = Vector2(37, 28)
+
+[node name="TeleportingEnemy" type="CharacterBody2D" unique_id=1342658842]
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("1_pm1up")
+Health = 5
+Speed = 400.0
+ChargeDistance = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_qr4i2")
+
+[node name="Icon" type="AnimatedSprite2D" parent="." unique_id=89264691]
+sprite_frames = SubResource("SpriteFrames_qr4i2")
+animation = &"Back"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=437618089]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1667751045]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_uk0vl")
+
+[node name="HelixShotTimer" type="Timer" parent="." unique_id=1345757827]
+one_shot = true
+autostart = true
+
+[node name="TeleportCheck" type="RayCast2D" parent="." unique_id=1674576416]
+collision_mask = 8
+
+[connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]
+[connection signal="timeout" from="HelixShotTimer" to="." method="_on_helix_shot_timer_timeout"]

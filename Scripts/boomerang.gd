@@ -37,6 +37,7 @@ func _on_pathfind_timer_timeout():
 func _on_body_entered(body):
 	if body.name == "Player":
 		if idkwhattocallititmakessureitdoesntinstantlygetdestroyed:
+			body.BoomerangsOut -= 1
 			queue_free()
 		else:
 			idkwhattocallititmakessureitdoesntinstantlygetdestroyed = true

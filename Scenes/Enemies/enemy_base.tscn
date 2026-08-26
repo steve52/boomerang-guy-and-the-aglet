@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://blwptn62xtogp"]
 
-[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://icon.svg" id="1_8nqel"]
-[ext_resource type="Script" uid="uid://dkl81eku1wdw3" path="res://EnemyClass.gd" id="1_edvsq"]
+[ext_resource type="Script" uid="uid://dkl81eku1wdw3" path="res://Scripts/EnemyClass.gd" id="1_vu4yt"]
+[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://Assets/icon.svg" id="2_wmxvo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
 size = Vector2(61, 62)
@@ -13,7 +13,7 @@ size = Vector2(66, 66)
 modulate = Color(1, 0.22644159, 0.30998963, 1)
 collision_layer = 4
 collision_mask = 12
-script = ExtResource("1_edvsq")
+script = ExtResource("1_vu4yt")
 Speed = 400.0
 ChargeDistance = 3.0
 
@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_qr4i2")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=1940268398]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_8nqel")
+texture = ExtResource("2_wmxvo")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=437618089]
 collision_layer = 4

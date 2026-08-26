@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oqu7f1shyi16"
-path="res://.godot/imported/Boomerang.png-66c17947fb952e158de87e0f2052247b.ctex"
+uid="uid://ck6ohockcxovy"
+path="res://.godot/imported/Bullet2.png-ed182ef6aecad681083cf4e9dc839a28.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Boomerang.png"
-dest_files=["res://.godot/imported/Boomerang.png-66c17947fb952e158de87e0f2052247b.ctex"]
+source_file="res://Assets/Bullet2.png"
+dest_files=["res://.godot/imported/Bullet2.png-ed182ef6aecad681083cf4e9dc839a28.ctex"]
 
 [params]
 

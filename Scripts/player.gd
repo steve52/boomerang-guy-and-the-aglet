@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var Speed = 20
 const BOOMERANG = preload("uid://bgv7yok8kgxfo")
+var BoomerangsOut = 0
 var Walking = false
 var Rotate = 0
 
@@ -44,8 +45,14 @@ func _physics_process(delta):
 	move_and_slide()
 
 func Attack():
-	var Boomerang = BOOMERANG.instantiate()
-	get_parent().add_child(Boomerang)
-	Boomerang.position = position
-	Boomerang.Target = get_global_mouse_position()
-	Boomerang.Player = self
+	if BoomerangsOut != 3:
+		BoomerangsOut += 1
+		var Boomerang = BOOMERANG.instantiate()
+		get_parent().add_child(Boomerang)
+		Boomerang.position = position
+		Boomerang.Target = get_global_mouse_position()
+		Boomerang.Player = self
+
+
+func Hit(HitBy):
+	print("Dead")

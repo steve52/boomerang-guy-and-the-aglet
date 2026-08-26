@@ -1,0 +1,19 @@
+extends Area2D
+
+@export var Speed: int
+var direction
+var Shot = false
+
+func Shoot():
+	Shot = true
+	rotation = direction.angle()
+
+func _physics_process(delta):
+	if Shot:
+		var velocity = direction * Speed * delta
+		position += velocity
+
+
+func Hit(ThingHit):
+	if ThingHit.name != "Player":
+		queue_free()
