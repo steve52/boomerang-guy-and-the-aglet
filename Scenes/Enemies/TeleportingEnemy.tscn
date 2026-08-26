@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://d16f3v2leehim"]
+
+[ext_resource type="Script" uid="uid://b1otodreveq1k" path="res://Scripts/teleporting_enemy.gd" id="1_pm1up"]
+[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://Assets/icon.svg" id="2_7su5n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
+size = Vector2(61, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk0vl"]
+size = Vector2(66, 66)
+
+[node name="TeleportingEnemy" type="CharacterBody2D" unique_id=1342658842]
+modulate = Color(1, 0.22644159, 0.30998963, 1)
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("1_pm1up")
+Health = 3
+Speed = 400.0
+ChargeDistance = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_qr4i2")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1940268398]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7su5n")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=437618089]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1667751045]
+shape = SubResource("RectangleShape2D_uk0vl")
+
+[node name="HelixShotTimer" type="Timer" parent="." unique_id=1345757827]
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]
+[connection signal="timeout" from="HelixShotTimer" to="." method="_on_helix_shot_timer_timeout"]

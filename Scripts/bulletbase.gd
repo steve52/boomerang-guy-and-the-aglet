@@ -6,6 +6,7 @@ var Shot = false
 
 func Shoot():
 	Shot = true
+	rotation = direction.angle()
 
 func _physics_process(delta):
 	if Shot:

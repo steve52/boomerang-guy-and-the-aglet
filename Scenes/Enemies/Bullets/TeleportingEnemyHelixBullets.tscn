@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://syjmblse5q32"]
+
+[ext_resource type="Script" uid="uid://cd4egfyqhjxaw" path="res://Scripts/teleporting_enemy_helix_bullets.gd" id="1_0ympl"]
+[ext_resource type="PackedScene" uid="uid://dglr2db7gdji5" path="res://Scenes/Enemies/Bullets/bulletbase.tscn" id="3_oryey"]
+
+[sub_resource type="Curve2D" id="Curve2D_t4fnf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -16, 0, 0, 0, 0, 0, 16)
+}
+point_count = 2
+
+[node name="HelixCenter" type="Area2D" unique_id=728361005]
+script = ExtResource("1_0ympl")
+Speed = 160
+
+[node name="Path2D" type="Path2D" parent="." unique_id=782855926]
+curve = SubResource("Curve2D_t4fnf")
+
+[node name="Helix1" type="PathFollow2D" parent="Path2D" unique_id=113414146]
+position = Vector2(0, -16)
+rotates = false
+
+[node name="Helix1" parent="Path2D/Helix1" unique_id=1977895300 instance=ExtResource("3_oryey")]
+
+[node name="Helix2" type="PathFollow2D" parent="Path2D" unique_id=1502990528]
+position = Vector2(0, 16)
+progress = 32.0
+rotates = false
+
+[node name="Helix2" parent="Path2D/Helix2" unique_id=372610805 instance=ExtResource("3_oryey")]
