@@ -200,6 +200,8 @@ navigation_polygon = SubResource("NavigationPolygon_80nbo")
 [node name="Player" parent="." unique_id=197361324 instance=ExtResource("1_ebmjs")]
 position = Vector2(141, 279)
 
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=2011031836]
+
 [node name="TeleportingEnemy" parent="." unique_id=1342658842 instance=ExtResource("3_wrm1d")]
 position = Vector2(906, 604)
 
