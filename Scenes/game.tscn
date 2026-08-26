@@ -31,3 +31,13 @@ position = Vector2(486, 51)
 
 [node name="TeleportingEnemy2" parent="." unique_id=888055439 instance=ExtResource("3_wrm1d")]
 position = Vector2(947, 328)
+
+[node name="ChargingEnemy3" parent="." unique_id=1392797640 instance=ExtResource("2_qxrlw")]
+position = Vector2(289, 935)
+
+[node name="WallTemp" type="StaticBody2D" parent="." unique_id=541704539]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WallTemp" unique_id=534953096]
+polygon = PackedVector2Array(1144, -12, -81, -37, -37, 1354, 2081, 1307, 2113, -8, 1017, -49, 1071, 64, 2050, 51, 2028, 1259, -18, 1297, -34, 17, 1155, 42)

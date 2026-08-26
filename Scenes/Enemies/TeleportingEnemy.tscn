@@ -14,7 +14,7 @@ modulate = Color(1, 0.22644159, 0.30998963, 1)
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_pm1up")
-Health = 3
+Health = 5
 Speed = 400.0
 ChargeDistance = 3.0
 
@@ -36,6 +36,12 @@ shape = SubResource("RectangleShape2D_uk0vl")
 [node name="HelixShotTimer" type="Timer" parent="." unique_id=1345757827]
 one_shot = true
 autostart = true
+
+[node name="TeleportTimer" type="Timer" parent="." unique_id=2068581961]
+one_shot = true
+
+[node name="TeleportCheck" type="RayCast2D" parent="." unique_id=1674576416]
+collision_mask = 8
 
 [connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]
 [connection signal="timeout" from="HelixShotTimer" to="." method="_on_helix_shot_timer_timeout"]
