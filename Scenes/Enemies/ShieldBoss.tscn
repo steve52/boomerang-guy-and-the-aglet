@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://b5a8hky43rkw3"]
+
+[ext_resource type="Script" uid="uid://d061rufd8worw" path="res://Scenes/Enemies/shield_boss.gd" id="1_kgna6"]
+[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://Assets/icon.svg" id="2_kgna6"]
+[ext_resource type="Texture2D" uid="uid://dfn0as6y71dw5" path="res://Assets/StormwallShield.png" id="3_kgna6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
+size = Vector2(61, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk0vl"]
+size = Vector2(66, 66)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uk0vl"]
+radius = 6.0
+height = 98.0
+
+[node name="ShieldBoss" type="CharacterBody2D" unique_id=1342658842]
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("1_kgna6")
+Speed = 400.0
+ChargeDistance = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_qr4i2")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1940268398]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_kgna6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=437618089]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1667751045]
+shape = SubResource("RectangleShape2D_uk0vl")
+
+[node name="ShieldPivot" type="Node2D" parent="." unique_id=1067250997]
+
+[node name="Shield" type="AnimatableBody2D" parent="ShieldPivot" unique_id=1169571093]
+position = Vector2(-100, 0)
+collision_layer = 64
+
+[node name="Sprite2D" type="Sprite2D" parent="ShieldPivot/Shield" unique_id=1037042098]
+texture = ExtResource("3_kgna6")
+
+[node name="ShieldHitbox" type="CollisionShape2D" parent="ShieldPivot/Shield" unique_id=1034695215]
+position = Vector2(-12, 0)
+shape = SubResource("CapsuleShape2D_uk0vl")
+
+[connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]

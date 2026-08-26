@@ -17,7 +17,11 @@ func SpriteDirectionCheck():
 func TakeDamage(Boomerang):
 	Health -= 1
 	if Health == 0:
-		Die()
+		if !CheckForPhaseChanges():
+			Die()
+
+func CheckForPhaseChanges():
+	return false
 
 func Die():
 	DeathAnimation()
