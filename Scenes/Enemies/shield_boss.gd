@@ -61,7 +61,7 @@ func BeforePhase1Charge():
 	Charge()
 
 func BeforePhase2Charge():
-	for i in 3:
+	for i in 2:
 		Charge()
 		await Phase2ChargeDone
 	$AttackCooldown.start(3 + randf_range(-.5,.5))
@@ -140,9 +140,9 @@ func DuringDash(DashTime):
 	var TimeToShoot = DashTime/20
 	for i in 20:
 		await get_tree().create_timer(TimeToShoot).timeout
-		if i != 1 or 20:
+		if i != 20:
 			var BulletDirection = position.direction_to(Player.position)
-			ShootBullets(DASH_BARRAGE_BULLETS,BulletDirection,position)
+			ShootBullets(DASH_BARRAGE_BULLETS,BulletDirection, position)
 
 
 func AfterDash():
