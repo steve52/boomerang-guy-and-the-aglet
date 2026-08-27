@@ -16,13 +16,13 @@ func BeforeCharge():
 	await get_tree().create_timer(.6).timeout
 	for i in 8:
 		var BulletDirection = Vector2.from_angle(deg_to_rad(i*45))
-		ShootBullets(CHARGING_ENEMY_BULLETS, BulletDirection)
+		ShootBullets(CHARGING_ENEMY_BULLETS, BulletDirection, position)
 	Charge()
 
 func  AfterCharge():
 	for i in 8:
 		var BulletDirection = Vector2.from_angle(deg_to_rad(i*45))
-		ShootBullets(CHARGING_ENEMY_BULLETS, BulletDirection)
+		ShootBullets(CHARGING_ENEMY_BULLETS, BulletDirection, position)
 	$ChargeTimer.start(3+randf_range(-1,1))
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "rotation_degrees", 0, .2)

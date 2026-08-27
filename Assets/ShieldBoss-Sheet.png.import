@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch14g8hv4n07h"
-path="res://.godot/imported/StormwallShield-Sheet.png-4f514b073bb9e53e7292e30c33ae1f99.ctex"
+uid="uid://calwpsyio4qx7"
+path="res://.godot/imported/ShieldBoss-Sheet.png-c586c506813aa93ff90b745eca6a17b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/StormwallShield-Sheet.png"
-dest_files=["res://.godot/imported/StormwallShield-Sheet.png-4f514b073bb9e53e7292e30c33ae1f99.ctex"]
+source_file="res://Assets/ShieldBoss-Sheet.png"
+dest_files=["res://.godot/imported/ShieldBoss-Sheet.png-c586c506813aa93ff90b745eca6a17b3.ctex"]
 
 [params]
 

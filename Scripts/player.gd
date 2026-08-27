@@ -54,5 +54,5 @@ func Attack():
 		Boomerang.Player = self
 
 
-func Hit(HitBy):
+func Hit(_HitBy):
 	print("Dead")

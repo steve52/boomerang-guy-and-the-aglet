@@ -6,15 +6,15 @@ var Target
 var Speed = 800
 var Returning = false
 var idkwhattocallititmakessureitdoesntinstantlygetdestroyed = false
-
+var ThrowTween 
 
 func _ready():
 	await get_tree().create_timer(.02).timeout
-	var tween = get_tree().create_tween()
+	ThrowTween = get_tree().create_tween()
 	var realtarget = position.direction_to(Target) * 700 + position
 	var ETA = position.distance_to(realtarget) / Speed
-	tween.tween_property(self,"position",realtarget, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	await get_tree().create_timer(ETA-1).timeout
+	ThrowTween.tween_property(self,"position",realtarget, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	await ThrowTween.finished
 	Returning = true
 	$PathfindTimer.start()
 	_on_pathfind_timer_timeout()
@@ -41,3 +41,9 @@ func _on_body_entered(body):
 			queue_free()
 		else:
 			idkwhattocallititmakessureitdoesntinstantlygetdestroyed = true
+	elif body.name == "Shield":
+		if !Returning:
+			Returning = true
+			$PathfindTimer.start()
+			_on_pathfind_timer_timeout()
+			ThrowTween.kill()
