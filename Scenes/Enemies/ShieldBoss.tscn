@@ -18,8 +18,11 @@ height = 98.0
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_kgna6")
-Speed = 400.0
-ChargeDistance = 3.0
+Health = 15
+Speed = 500.0
+ChargeDistance = 8.0
+Phases = 2
+HealthPerPhase = [15, 45]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
 position = Vector2(0.5, 0)
@@ -51,4 +54,11 @@ flip_h = true
 position = Vector2(12, 0)
 shape = SubResource("CapsuleShape2D_uk0vl")
 
+[node name="AttackCooldown" type="Timer" parent="." unique_id=1031983684]
+one_shot = true
+
+[node name="DashCheck" type="RayCast2D" parent="." unique_id=362331669]
+collision_mask = 9
+
 [connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]
+[connection signal="timeout" from="AttackCooldown" to="." method="Attack"]

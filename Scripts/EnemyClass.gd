@@ -1,9 +1,12 @@
 extends CharacterBody2D
 
 var Player
+var Phase = 1
 @export var Health : int
 @export var Speed : float
 @export var ChargeDistance : float
+@export var Phases: int = 1
+@export var HealthPerPhase: Array
 
 func _ready():
 	Player = get_parent().Player
@@ -21,7 +24,16 @@ func TakeDamage(_Boomerang):
 			Die()
 
 func CheckForPhaseChanges():
-	return false
+	if Phase == Phases:
+		return false
+	else:
+		Phase += 1
+		Health = HealthPerPhase.get(Phase-1)
+		ChangePhase()
+		return true
+
+func ChangePhase():
+	pass
 
 func Die():
 	DeathAnimation()
@@ -49,8 +61,12 @@ func Charge():
 	var ETA = position.distance_to(TargetPosition) / (Speed * 1.5)
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(self, "position", TargetPosition, ETA).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+	DuringCharge(ETA)
 	await  tween2.finished
 	AfterCharge()
+
+func DuringCharge(_ChargeTime):
+	pass
 
 func AfterCharge():
 	pass
@@ -72,8 +88,12 @@ func Dash(Target):
 	var ETA = position.distance_to(Target) / (Speed)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Target, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	DuringDash(ETA)
 	await  tween.finished
 	AfterDash()
+
+func DuringDash(_DashTime):
+	pass
 
 func AfterDash():
 	pass
