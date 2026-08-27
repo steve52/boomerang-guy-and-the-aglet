@@ -26,6 +26,11 @@ func _physics_process(delta):
 		var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		var NewVelocity = delta * Speed * direction
 		position += NewVelocity
+	if Input.is_action_just_pressed("BoomerangRecall"):
+		ThrowTween.kill()
+		Returning = true
+		$PathfindTimer.start()
+		_on_pathfind_timer_timeout()
 	$Icon.rotation_degrees += 15
 
 
@@ -42,7 +47,8 @@ func _on_body_entered(body):
 		else:
 			idkwhattocallititmakessureitdoesntinstantlygetdestroyed = true
 	elif body.name == "Shield":
-		print("a")
 		if !Returning:
-			print("b")
+			Returning = true
+			$PathfindTimer.start()
+			_on_pathfind_timer_timeout()
 			ThrowTween.kill()

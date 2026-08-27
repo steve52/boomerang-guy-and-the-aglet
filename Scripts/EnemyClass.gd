@@ -8,13 +8,13 @@ var Player
 func _ready():
 	Player = get_parent().Player
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	SpriteDirectionCheck()
 
 func SpriteDirectionCheck():
 	pass
 
-func TakeDamage(Boomerang):
+func TakeDamage(_Boomerang):
 	Health -= 1
 	if Health == 0:
 		if !CheckForPhaseChanges():
@@ -31,10 +31,10 @@ func Die():
 func DeathAnimation():
 	return 
 
-func ShootBullets(Bullets,direction):
+func ShootBullets(Bullets,direction,StartPosition):
 	var bullets = Bullets.instantiate()
 	get_parent().add_child(bullets)
-	bullets.position = position
+	bullets.position = StartPosition
 	bullets.direction = direction
 	bullets.Shoot()
 
@@ -56,7 +56,7 @@ func AfterCharge():
 	pass
 
 func BeforeTeleport(Target):
-	pass
+	Teleport(Target)
 
 func Teleport(Target):
 	position = Target
@@ -66,7 +66,7 @@ func AfterTeleport():
 	pass
 
 func BeforeDash(Target):
-	pass
+	Dash(Target)
 
 func Dash(Target):
 	var ETA = position.distance_to(Target) / (Speed)

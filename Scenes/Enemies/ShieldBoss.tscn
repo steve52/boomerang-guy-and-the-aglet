@@ -39,14 +39,16 @@ shape = SubResource("RectangleShape2D_uk0vl")
 [node name="ShieldPivot" type="Node2D" parent="." unique_id=1067250997]
 
 [node name="Shield" type="AnimatableBody2D" parent="ShieldPivot" unique_id=1169571093]
-position = Vector2(-100, 0)
+position = Vector2(100, 0)
 collision_layer = 64
+sync_to_physics = false
 
 [node name="Sprite2D" type="Sprite2D" parent="ShieldPivot/Shield" unique_id=1037042098]
 texture = ExtResource("3_kgna6")
+flip_h = true
 
 [node name="ShieldHitbox" type="CollisionShape2D" parent="ShieldPivot/Shield" unique_id=1034695215]
-position = Vector2(-12, 0)
+position = Vector2(12, 0)
 shape = SubResource("CapsuleShape2D_uk0vl")
 
 [connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]

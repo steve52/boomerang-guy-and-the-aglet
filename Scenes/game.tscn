@@ -20,4 +20,4 @@ navigation_polygon = SubResource("NavigationPolygon_80nbo")
 position = Vector2(141, 279)
 
 [node name="ShieldBoss" parent="." unique_id=1342658842 instance=ExtResource("3_wrm1d")]
-position = Vector2(638, 258)
+position = Vector2(1036, 531)
