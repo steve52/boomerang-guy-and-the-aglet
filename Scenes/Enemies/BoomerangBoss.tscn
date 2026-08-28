@@ -41,11 +41,11 @@ top_level = true
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_c5u5r")
-Health = 45
+Health = 42
 Speed = 400.0
 ChargeDistance = 3.0
 Phases = 2
-HealthPerPhase = [45, 40]
+HealthPerPhase = [42, 55]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
 position = Vector2(0, 1.5)

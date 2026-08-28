@@ -18,6 +18,16 @@ func _ready():
 func SpriteDirectionCheck():
 	$Icon.animation = "Back" if position.y > Player.position.y else "Front"
 
+func ChangePhase():
+	$AttackTimer.paused = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(self,"global_scale", Vector2(1.5,1.5), .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
+	await tween.finished
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self,"scale", Vector2(1,1), .4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+	$AttackTimer.paused = false
+	AttackNumber = 0
+
 func Attack():
 	if Phase == 1:
 		if Phase1Pattern.get(AttackNumber) == 0:
