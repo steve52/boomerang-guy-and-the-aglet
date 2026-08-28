@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://ejwdfvr3e1lo"]
+
+[ext_resource type="Script" uid="uid://r4kr5qejovom" path="res://Scenes/dialogue_manager.gd" id="1_atyk4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3t11"]
+font_size = 32
+
+[node name="DialogueManager" type="CanvasLayer" unique_id=1836648668]
+process_mode = 3
+script = ExtResource("1_atyk4")
+
+[node name="DialogueBox" type="Control" parent="." unique_id=126683176]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="DialogueBox" unique_id=1778303734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="DialogueText" type="Label" parent="DialogueBox" unique_id=100267154]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THis is dialogue"
+label_settings = SubResource("LabelSettings_r3t11")
+autowrap_mode = 3

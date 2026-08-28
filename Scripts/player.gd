@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var Health = 3
-@export var Speed = 20
+@export var Speed = 30
 const BOOMERANG = preload("uid://bgv7yok8kgxfo")
 var BoomerangsOut = 0
 var Walking = false
@@ -57,6 +57,7 @@ func Attack():
 
 
 func Hit(_HitBy):
+	return
 	if !IFrames:
 		Health -= 1
 		IFrames = true

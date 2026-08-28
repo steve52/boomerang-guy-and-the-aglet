@@ -23,6 +23,9 @@ func MoveShield():
 		$ShieldPivot.look_at(Player.position)
 
 func ChangePhase():
+	print("Phase: " + str(Phase))
+	if (Phase == 2):
+		DialogueManager.start_dialogue("shield_boss_phase_2")
 	$ShieldPivot.queue_free()
 	AttackNumber = 0
 
