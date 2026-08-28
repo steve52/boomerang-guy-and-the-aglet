@@ -1,14 +1,21 @@
 extends CharacterBody2D
 
 @export var Health = 3
-@export var Speed = 20
+@export var BaseSpeed = 20
+var Speed = 20
 const BOOMERANG = preload("uid://bgv7yok8kgxfo")
 var BoomerangsOut = 0
 var Walking = false
 var Rotate = 0
 var IFrames = false
+var AttackCooldown = false
 
 func _physics_process(delta):
+	
+	if Input.is_action_pressed("Sprint"):
+		Speed = BaseSpeed* 1.5
+	else:
+		Speed = BaseSpeed
 	
 	if Input.is_action_pressed("Down"):
 		velocity.y = Speed * delta * 1000
@@ -40,9 +47,12 @@ func _physics_process(delta):
 			if rotation_degrees <= -15:
 				Rotate = 0
 	
-	if Input.is_action_just_pressed("Attack"):
-		Attack()
-	
+	if Input.is_action_pressed("Attack"):
+		if !AttackCooldown:
+			Attack()
+			AttackCooldown = true
+			await get_tree().create_timer(.1).timeout
+			AttackCooldown = false
 	
 	move_and_slide()
 
@@ -62,7 +72,7 @@ func Hit(_HitBy):
 		IFrames = true
 		if Health == 0:
 			get_tree().paused = true
-			queue_free()
+			self.visible = false
 			print("Dead")
 		await get_tree().create_timer(.5).timeout
 		IFrames = false

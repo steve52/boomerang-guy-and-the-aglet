@@ -64,7 +64,6 @@ func Charge():
 	Raycast.collision_mask = 8
 	Raycast.force_raycast_update()
 	if Raycast.is_colliding():
-		print("A")
 		var WallSpot = Raycast.get_collision_point()
 		TargetPosition = WallSpot.direction_to(position) * 32 + WallSpot
 	var ETA = position.distance_to(TargetPosition) / (Speed * 1.5)
@@ -102,7 +101,6 @@ func Dash(Target):
 	Raycast.collision_mask = 8
 	Raycast.force_raycast_update()
 	if Raycast.is_colliding():
-		print("A")
 		var WallSpot = Raycast.get_collision_point()
 		Target = WallSpot.direction_to(position) * 32 + WallSpot
 	var tween = get_tree().create_tween()
