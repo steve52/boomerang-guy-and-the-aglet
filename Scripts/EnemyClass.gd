@@ -57,14 +57,13 @@ func Charge():
 	var tween = get_tree().create_tween()
 	var tilt = -15 if Player.position.x < position.x else 15
 	tween.tween_property(self, "rotation_degrees", tilt, .2) 
+	var TargetPosition = (position.direction_to(Player.position) * ChargeDistance * 100) + position
 	var Raycast = RayCast2D.new()
 	add_child(Raycast)
-	var TargetPosition = (position.direction_to(Player.position) * ChargeDistance * 100) + position
 	Raycast.target_position = to_local(TargetPosition) 
 	Raycast.collision_mask = 8
 	Raycast.force_raycast_update()
 	if Raycast.is_colliding():
-		print("A")
 		var WallSpot = Raycast.get_collision_point()
 		TargetPosition = WallSpot.direction_to(position) * 32 + WallSpot
 	var ETA = position.distance_to(TargetPosition) / (Speed * 1.5)
@@ -96,9 +95,18 @@ func BeforeDash(Target):
 
 func Dash(Target):
 	var ETA = position.distance_to(Target) / (Speed)
+	var Raycast = RayCast2D.new()
+	add_child(Raycast)
+	Raycast.target_position = to_local(Target) 
+	Raycast.collision_mask = 8
+	Raycast.force_raycast_update()
+	if Raycast.is_colliding():
+		var WallSpot = Raycast.get_collision_point()
+		Target = WallSpot.direction_to(position) * 32 + WallSpot
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "position", Target, ETA).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	DuringDash(ETA)
+	Raycast.queue_free()
 	await  tween.finished
 	AfterDash()
 
