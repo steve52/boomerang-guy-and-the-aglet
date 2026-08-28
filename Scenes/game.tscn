@@ -2,10 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://du0xmkdwkcg8q" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://b3qvw8wgviqfs" path="res://Scripts/game.gd" id="1_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://b5a8hky43rkw3" path="res://Scenes/Enemies/ShieldBoss.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://cuselsv4h0gmx" path="res://Scenes/Enemies/ChargingEnemy.tscn" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://c3c1ttp4x5a40" path="res://Assets/boomerang_tiles.png" id="2_wowpa"]
-[ext_resource type="PackedScene" uid="uid://d16f3v2leehim" path="res://Scenes/Enemies/TeleportingEnemy.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://b5a8hky43rkw3" path="res://Scenes/Enemies/ShieldBoss.tscn" id="3_wrm1d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_wowpa")
@@ -243,21 +241,7 @@ navigation_polygon = SubResource("NavigationPolygon_80nbo")
 [node name="Player" parent="." unique_id=197361324 instance=ExtResource("1_ebmjs")]
 position = Vector2(141, 279)
 
-[node name="ShieldBoss" parent="." unique_id=1342658842 instance=ExtResource("3_wrm1d")]
-position = Vector2(1036, 531)
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2011031836]
 
-[node name="TeleportingEnemy" parent="." unique_id=1342658842 instance=ExtResource("3_wrm1d")]
-position = Vector2(906, 604)
-
-[node name="ChargingEnemy" parent="." unique_id=1470947033 instance=ExtResource("2_qxrlw")]
-position = Vector2(506, 634)
-
-[node name="ChargingEnemy2" parent="." unique_id=2051171334 instance=ExtResource("2_qxrlw")]
-position = Vector2(488, 92)
-
-[node name="TeleportingEnemy2" parent="." unique_id=888055439 instance=ExtResource("3_wrm1d")]
-position = Vector2(947, 328)
-
-[node name="ChargingEnemy3" parent="." unique_id=1392797640 instance=ExtResource("2_qxrlw")]
-position = Vector2(289, 935)
+[node name="ShieldBoss" parent="." unique_id=1342658842 instance=ExtResource("3_wrm1d")]
+position = Vector2(918, 559)

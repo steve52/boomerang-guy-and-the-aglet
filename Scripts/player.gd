@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
+@export var Health = 3
 @export var Speed = 20
 const BOOMERANG = preload("uid://bgv7yok8kgxfo")
 var BoomerangsOut = 0
 var Walking = false
 var Rotate = 0
+var IFrames = false
 
 func _physics_process(delta):
 	
@@ -55,4 +57,12 @@ func Attack():
 
 
 func Hit(_HitBy):
-	print("Dead")
+	if !IFrames:
+		Health -= 1
+		IFrames = true
+		if Health == 0:
+			get_tree().paused = true
+			queue_free()
+			print("Dead")
+		await get_tree().create_timer(.5).timeout
+		IFrames = false
