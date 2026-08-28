@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://du0xmkdwkcg8q" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://b3qvw8wgviqfs" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://c3c1ttp4x5a40" path="res://Assets/boomerang_tiles.png" id="2_wowpa"]
-[ext_resource type="PackedScene" uid="uid://bree0emksubc3" path="res://Scenes/Enemies/BoomerangBoss.tscn" id="4_3dryh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_wowpa")
@@ -242,6 +241,3 @@ navigation_polygon = SubResource("NavigationPolygon_80nbo")
 position = Vector2(141, 279)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2011031836]
-
-[node name="BoomerangBoss" parent="." unique_id=1342658842 instance=ExtResource("4_3dryh")]
-position = Vector2(1393, 673)
