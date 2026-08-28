@@ -8,6 +8,12 @@ extends CanvasLayer
 
 
 func _process(delta: float) -> void:
-	player_health.text = "Player Health: " + str(player.Health)
-	enemy_health.text = "Enemy Health: " + str(enemy.Health)
+	if player != null:
+		player_health.text = "Player Health: " + str(player.Health)
+	else:
+		player_health.text = "Player Health: 0"
+	if enemy != null:
+		enemy_health.text = "Enemy Health: " + str(enemy.Health)
+	else:
+		enemy_health.text = "Enemy Health: 0"
 	
