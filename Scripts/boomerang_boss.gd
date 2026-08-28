@@ -6,9 +6,8 @@ const PHASE_2_SHOTGUN_BULLETS = preload("uid://dp0tqbr4vdtpi")
 const EVIL_BOOMERANG = preload("uid://bdgrpn1c2tfya")
 const SPIRAL_BULLETS = preload("uid://4uw0s7f2mr7u")
 const PHASE_1_WAVY_BULLETS = preload("uid://duoawnfml3wx1")
-
 var Phase1Pattern = [0,randi_range(0,1), 1, randi_range(0,1) ,1, randi_range(0,1)]
-var Phase2Pattern = [0, randi_range(1,2), 0, randi_range(0,2)]
+var Phase2Pattern = [0, randi_range(1,2), 0, randi_range(1,2)]
 var AttackNumber = 0
 
 func _ready():
@@ -89,6 +88,11 @@ func Phase1Wavy():
 	$AttackTimer.start(2.1 + randf_range(-.4,.4))
 
 func Phase2BoomerangBarrage():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "rotation_degrees", 180, .5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	await tween.finished
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self, "rotation_degrees", 360, .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	for i in 8:
 		var Boomerang = EVIL_BOOMERANG_BARRAGE.instantiate()
 		var direction = Vector2.from_angle(randf_range(-1*PI,PI))

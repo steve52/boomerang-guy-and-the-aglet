@@ -26,11 +26,6 @@ func MoveShield():
 func ChangePhase():
 	$ShieldPivot.queue_free()
 	AttackNumber = 0
-	var tween = get_tree().create_tween()
-	tween.tween_property(self,"global_scale", Vector2(1.5,1.5), .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
-	await tween.finished
-	var tween2 = get_tree().create_tween()
-	tween2.tween_property(self,"scale", Vector2(1,1), .4).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
 
 func Attack():
 	if Phase == 1:
