@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bree0emksubc3"]
+
+[ext_resource type="Script" uid="uid://bjmh5053vxkit" path="res://Scripts/boomerang_boss.gd" id="1_c5u5r"]
+[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://Assets/icon.svg" id="2_y8mae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
+size = Vector2(61, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uk0vl"]
+size = Vector2(66, 66)
+
+[node name="BoomerangBoss" type="CharacterBody2D" unique_id=1342658842]
+modulate = Color(1, 0.22644159, 0.30998963, 1)
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("1_c5u5r")
+Health = 30
+Speed = 400.0
+ChargeDistance = 3.0
+Phases = 2
+HealthPerPhase = [30, 40]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_qr4i2")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1940268398]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_y8mae")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=437618089]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1667751045]
+shape = SubResource("RectangleShape2D_uk0vl")
+
+[connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]

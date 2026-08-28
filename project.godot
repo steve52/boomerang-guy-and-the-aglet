@@ -65,6 +65,7 @@ Sprint={
 2d_physics/layer_5="EnemyBullet"
 2d_physics/layer_6="AllyShield"
 2d_physics/layer_7="EnemyShield"
+2d_physics/layer_8="EnemyBoomerang"
 
 [physics]
 

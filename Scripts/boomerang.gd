@@ -23,15 +23,18 @@ func _ready():
 
 func _physics_process(delta):
 	if Returning == true:
-		var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
-		var NewVelocity = delta * Speed * direction
+		var direction2 = to_local($NavigationAgent2D.get_next_path_position()).normalized()
+		var NewVelocity = delta * Speed * direction2
 		position += NewVelocity
 	$Icon.rotation_degrees += 15
 
 
 
 func _on_pathfind_timer_timeout():
-	$NavigationAgent2D.target_position = Player.position
+	if Player != null:
+		$NavigationAgent2D.target_position = Player.position
+	else:
+		queue_free()
 
 
 func _on_body_entered(body):
@@ -40,7 +43,7 @@ func _on_body_entered(body):
 			body.BoomerangsOut -= 1
 			queue_free()
 		else:
-			idkwhattocallititmakessureitdoesntinstantlygetdestroyed = true
+			idkwhattocallititmakessureitdoesntinstantlygetdestroyed = true 
 	elif body.name == "Shield":
 		if !Returning:
 			Returning = true
