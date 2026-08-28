@@ -1,38 +1,71 @@
 [gd_scene format=3 uid="uid://bree0emksubc3"]
 
 [ext_resource type="Script" uid="uid://bjmh5053vxkit" path="res://Scripts/boomerang_boss.gd" id="1_c5u5r"]
-[ext_resource type="Texture2D" uid="uid://dp0okb4iueg7c" path="res://Assets/icon.svg" id="2_y8mae"]
+[ext_resource type="Texture2D" uid="uid://bcgf02hhncb3f" path="res://Assets/Boomerang Guy-Sheet.png" id="2_c5u5r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qr4i2"]
-size = Vector2(61, 62)
+size = Vector2(36, 59)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8mae"]
+atlas = ExtResource("2_c5u5r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnknb"]
+atlas = ExtResource("2_c5u5r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qr4i2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8mae")
+}],
+"loop": 1,
+"name": &"Back",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnknb")
+}],
+"loop": 1,
+"name": &"Front",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uk0vl"]
-size = Vector2(66, 66)
+size = Vector2(41, 62)
 
 [node name="BoomerangBoss" type="CharacterBody2D" unique_id=1342658842]
-modulate = Color(1, 0.22644159, 0.30998963, 1)
+top_level = true
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_c5u5r")
-Health = 30
+Health = 45
 Speed = 400.0
 ChargeDistance = 3.0
 Phases = 2
-HealthPerPhase = [30, 40]
+HealthPerPhase = [45, 40]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=510287407]
-position = Vector2(0.5, 0)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_qr4i2")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=1940268398]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_y8mae")
+[node name="Icon" type="AnimatedSprite2D" parent="." unique_id=1799628816]
+self_modulate = Color(0.98200446, 0.35876575, 0.64102936, 1)
+sprite_frames = SubResource("SpriteFrames_qr4i2")
+animation = &"Back"
 
 [node name="Area2D" type="Area2D" parent="." unique_id=437618089]
-collision_layer = 4
+collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1667751045]
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_uk0vl")
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=1480331897]
+one_shot = true
+
 [connection signal="area_entered" from="Area2D" to="." method="TakeDamage"]
+[connection signal="timeout" from="AttackTimer" to="." method="Attack"]

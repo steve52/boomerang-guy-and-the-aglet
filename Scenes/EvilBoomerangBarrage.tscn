@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dnilkgsdfk1pi"]
+
+[ext_resource type="Script" uid="uid://d1andrupoj2ei" path="res://Scenes/evil_boomerang_barrage.gd" id="1_n6yp4"]
+[ext_resource type="Texture2D" uid="uid://oqu7f1shyi16" path="res://Assets/Boomerang.png" id="2_he060"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nkeej"]
+radius = 16.0
+
+[node name="EvilBoomerang" type="Area2D" unique_id=1988980179]
+modulate = Color(0.721718, 0.20923322, 0.20547515, 1)
+collision_layer = 128
+collision_mask = 37
+script = ExtResource("1_n6yp4")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1512811002]
+texture = ExtResource("2_he060")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1352173643]
+shape = SubResource("CircleShape2D_nkeej")
+
+[node name="PathfindTimer" type="Timer" parent="." unique_id=1006091501]
+wait_time = 0.1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=55848060]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="PathfindTimer" to="." method="_on_pathfind_timer_timeout"]
