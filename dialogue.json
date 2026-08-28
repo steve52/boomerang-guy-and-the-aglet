@@ -1,0 +1,23 @@
+{
+	"shield_boss_phase_2": [		
+		{
+			"speaker": "Shield Boss", 
+			"text": "You have worn me down and completed phase one of my attacks."
+		}, 
+		{
+			"speaker": "Boomer", 
+			"text": "Shield Boss, my old friend! I trusted you. How could you do this?!"},
+		{
+			"speaker": "Shield Boss", 
+			"text": "Trust is for fools!"}, 
+		{
+			"speaker": "Boomer", 
+			"text": "Please.. there's still time for you. Give me the anglet."}, 
+		{
+			"speaker": "Shield Boss", 
+			"text": "....well, Ok you've convinced me. I'm still your friend. Here you go.... "},
+		{
+			"speaker": "Shield Boss", 
+			"text": "SIKE! You can TRUST NO ONE!"}
+	]
+}
