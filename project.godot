@@ -23,6 +23,11 @@ DialogueManager="*uid://ejwdfvr3e1lo"
 
 window/size/resizable=false
 
+[global_group]
+
+enemies=""
+player=""
+
 [input]
 
 Up={
@@ -70,6 +75,7 @@ Sprint={
 2d_physics/layer_6="AllyShield"
 2d_physics/layer_7="EnemyShield"
 2d_physics/layer_8="EnemyBoomerang"
+2d_physics/layer_9="EnemySpawnPoint"
 
 [physics]
 

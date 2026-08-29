@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://3tp07wa8w5gy"]
+
+[ext_resource type="Script" uid="uid://dmvg0udm7qdx2" path="res://Scripts/enemy_spawn_point.gd" id="1_n4jqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3t11"]
+
+[node name="EnemySpawnPoint" type="Area2D" unique_id=636165994]
+collision_layer = 257
+collision_mask = 0
+script = ExtResource("1_n4jqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1847580155]
+shape = SubResource("RectangleShape2D_r3t11")
