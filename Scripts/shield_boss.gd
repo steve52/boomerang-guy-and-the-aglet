@@ -3,8 +3,8 @@ extends "res://Scripts/EnemyClass.gd"
 const SHIELD_BLAST_BULLETS = preload("uid://bd27vlnwpbjmr")
 const DASH_BARRAGE_BULLETS = preload("uid://hodgh4fecxs")
 const PHASE_1_CHARGE_RING_BULLETS = preload("uid://hgdiqcdafapu")
-var Phase1Pattern = [1,0,1]
-var Phase2Pattern = [1, 0, 1, 1, 2, 0]
+var Phase1Pattern = [1,0,randi_range(0,1)]
+var Phase2Pattern = [1, randi_range(0,1), 0, 2, randi_range(0,1)]
 var AttackNumber = 0
 signal Phase2ChargeDone
 signal DashFinish
@@ -37,6 +37,8 @@ func Attack():
 		else:
 			ShieldBlast()
 		AttackNumber = 0 if AttackNumber == Phase1Pattern.size() - 1 else AttackNumber + 1 
+		if AttackNumber == 0:
+			Phase1Pattern = [1,0,randi_range(0,1)]
 	if Phase == 2:
 		if Phase2Pattern.get(AttackNumber) == 0:
 			BeforeCharge()
@@ -45,6 +47,8 @@ func Attack():
 		else:
 			RingsAttack()
 		AttackNumber = 0 if AttackNumber == Phase2Pattern.size() - 1 else AttackNumber + 1 
+		if AttackNumber == 0:
+			Phase2Pattern = [1, randi_range(0,1), randi_range(1,2), 1, 2, randi_range(0,2)]
 
 func BeforeCharge():
 	var tween = get_tree().create_tween()
@@ -79,13 +83,13 @@ func BeforePhase2Charge():
 	for i in 2:
 		Charge()
 		await Phase2ChargeDone
-	$AttackCooldown.start(3 + randf_range(-.5,.5))
+	$AttackCooldown.start(3.5 + randf_range(-.5,.5))
 
 func DuringCharge(ChargeTime):
 	if Phase == 1:
 		DuringPhase1Charge(ChargeTime)
 	else:
-		pass
+		$AttackCooldown.start(3 + randf_range(-.5,.5))
 
 func DuringPhase1Charge(ChargeTime):
 	var TimeToShoot = ChargeTime/2
@@ -112,7 +116,7 @@ func AfterPhase1Charge():
 		ShootBullets(PHASE_1_CHARGE_RING_BULLETS, BulletDirection, position)
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "rotation_degrees", 0, .2)
-	$AttackCooldown.start(3 + randf_range(-.5,.5))
+	$AttackCooldown.start(3 + randf_range(-.4,.4))
 
 func AfterPhase2Charge():
 	var tween = get_tree().create_tween()
@@ -132,10 +136,10 @@ func ShieldBlast():
 				
 				var BulletDirection = Vector2.from_angle(position.angle_to_point(Player.position) + (I - 8) * deg_to_rad(3))
 				ShootBullets(SHIELD_BLAST_BULLETS,BulletDirection,$ShieldPivot/Shield.global_position)
-	$AttackCooldown.start(3 + randf_range(-.5,.5))
+	$AttackCooldown.start(2 + randf_range(-.2,.2))
 
 func RingsAttack():
-	for i in 5:
+	for i in 4:
 		await get_tree().create_timer(.8).timeout
 		var SafeSpot = randi_range(31,40)
 		var SafeSpots = [SafeSpot,SafeSpot+1,SafeSpot-1]
@@ -143,7 +147,7 @@ func RingsAttack():
 			if !SafeSpots.has(I):
 				var BulletDirection = Vector2.from_angle(position.angle_to_point(Player.position) + (I - 35) * deg_to_rad(3))
 				ShootBullets(SHIELD_BLAST_BULLETS,BulletDirection,position)
-	$AttackCooldown.start(3 + randf_range(-.5,.5))
+	$AttackCooldown.start(3.3 + randf_range(-.53,.8))
 
 func DashBarrage():
 	var Direction = [Vector2.from_angle(position.direction_to(Player.position).angle() + PI/2), Vector2.from_angle(position.direction_to(Player.position).angle() - PI/2)] 
@@ -163,7 +167,7 @@ func DashBarrage():
 	await get_tree().create_timer(.2).timeout
 	Dash(Position2)
 	await DashFinish
-	$AttackCooldown.start(3 + randf_range(-.5,.5))
+	$AttackCooldown.start(2 + randf_range(-.4,.4))
 
 func DuringDash(DashTime):
 	var TimeToShoot = DashTime/20

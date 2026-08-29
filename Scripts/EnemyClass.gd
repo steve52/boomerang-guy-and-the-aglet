@@ -43,7 +43,7 @@ func Die():
 func DeathAnimation():
 	return 
 
-func ShootBullets(Bullets,direction,StartPosition):
+func ShootBullets(Bullets,direction,StartPosition = position):
 	var bullets = Bullets.instantiate()
 	get_parent().add_child(bullets)
 	bullets.position = StartPosition

@@ -49,7 +49,7 @@ position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_uk0vl")
 
 [node name="HitDetection" type="Area2D" parent="." unique_id=1645169056]
-collision_mask = 20
+collision_mask = 148
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitDetection" unique_id=209515102]
 position = Vector2(-0.5, 1.5)

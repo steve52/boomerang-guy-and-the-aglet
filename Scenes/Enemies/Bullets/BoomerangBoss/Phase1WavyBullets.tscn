@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://duoawnfml3wx1"]
+
+[ext_resource type="Script" uid="uid://dyffflwigqri3" path="res://Scripts/phase_1_wavy_bullets.gd" id="1_s3s6d"]
+[ext_resource type="PackedScene" uid="uid://dglr2db7gdji5" path="res://Scenes/Enemies/Bullets/bulletbase.tscn" id="2_s3s6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qr4i2"]
+radius = 16.0
+
+[sub_resource type="Curve2D" id="Curve2D_2jqce"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -96, 0, 0, 0, 0, 0, 96)
+}
+point_count = 2
+
+[node name="BulletBase" type="Area2D" unique_id=1656104743]
+collision_layer = 16
+collision_mask = 9
+script = ExtResource("1_s3s6d")
+Speed = 260
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=295492039]
+shape = SubResource("CircleShape2D_qr4i2")
+disabled = true
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1270739493]
+curve = SubResource("Curve2D_2jqce")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=441767484]
+rotation = 1.5707964
+progress = 96.0
+
+[node name="BulletBase" parent="Path2D/PathFollow2D" unique_id=1565664104 instance=ExtResource("2_s3s6d")]
+
+[connection signal="area_entered" from="." to="." method="Hit"]
+[connection signal="body_entered" from="." to="." method="Hit"]
