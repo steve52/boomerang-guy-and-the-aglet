@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b5a8hky43rkw3" path="res://Scenes/Enemies/ShieldBoss.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://cx2vdbwupks4q" path="res://Scenes/room_area2d.tscn" id="6_1l0tm"]
 [ext_resource type="Script" uid="uid://03kylyn6ak6w" path="res://Scripts/hud.gd" id="6_i6g32"]
-[ext_resource type="PackedScene" uid="uid://cuselsv4h0gmx" path="res://Scenes/Enemies/ChargingEnemy.tscn" id="7_v158k"]
 [ext_resource type="PackedScene" uid="uid://d16f3v2leehim" path="res://Scenes/Enemies/TeleportingEnemy.tscn" id="8_h4fw4"]
+[ext_resource type="PackedScene" uid="uid://3tp07wa8w5gy" path="res://Scenes/enemy_spawn_point.tscn" id="9_h4fw4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_wowpa")
@@ -308,11 +308,13 @@ text = "Enemy Health: 100"
 position = Vector2(3874, 357)
 scale = Vector2(78.17118, 54.844135)
 
-[node name="ChargingEnemy" parent="." unique_id=1139710602 instance=ExtResource("7_v158k")]
-position = Vector2(3435, 143)
-
-[node name="ChargingEnemy2" parent="." unique_id=972697824 instance=ExtResource("7_v158k")]
-position = Vector2(3825, 587)
-
 [node name="TeleportingEnemy" parent="." unique_id=1669330903 instance=ExtResource("8_h4fw4")]
 position = Vector2(6784, 1852)
+
+[node name="EnemySpawnPoint" parent="." unique_id=219178270 instance=ExtResource("9_h4fw4")]
+position = Vector2(3208, 722)
+enemy_type = "charging"
+
+[node name="EnemySpawnPoint2" parent="." unique_id=316590915 instance=ExtResource("9_h4fw4")]
+position = Vector2(3191, 595)
+enemy_type = "teleporting"

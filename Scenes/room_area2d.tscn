@@ -7,8 +7,8 @@
 [sub_resource type="GDScript" id="GDScript_edsjq"]
 
 [node name="RoomArea2d" type="Area2D" unique_id=1095550340]
-collision_layer = 256
-collision_mask = 5
+collision_layer = 0
+collision_mask = 257
 script = ExtResource("1_dyttk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580882112]
