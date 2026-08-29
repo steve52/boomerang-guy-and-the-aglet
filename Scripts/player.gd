@@ -67,6 +67,7 @@ func Attack():
 
 
 func Hit(_HitBy):
+	return
 	if !IFrames:
 		Health -= 1
 		IFrames = true

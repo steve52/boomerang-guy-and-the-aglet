@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://du0xmkdwkcg8q" path="res://Scenes/player.tscn" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://b3qvw8wgviqfs" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="Texture2D" uid="uid://c3c1ttp4x5a40" path="res://Assets/boomerang_tiles.png" id="2_wowpa"]
+[ext_resource type="PackedScene" uid="uid://b5a8hky43rkw3" path="res://Scenes/Enemies/ShieldBoss.tscn" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://03kylyn6ak6w" path="res://Scripts/hud.gd" id="6_i6g32"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wowpa"]
 texture = ExtResource("2_wowpa")
@@ -226,6 +228,14 @@ vertices = PackedVector2Array(3064.5703, 1642.0234, -1239.9766, 1335.6875, -1236
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1246, -934, 2269, -1265, 3078, 1653, -1250, 1345)])
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbmeu"]
+bg_color = Color(0, 0, 0, 0.70000005)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3t11"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1drwr"]
+bg_color = Color(0, 0, 0, 0.70000005)
+
 [node name="Game" type="Node2D" unique_id=1147405228 node_paths=PackedStringArray("Player")]
 script = ExtResource("1_wrm1d")
 Player = NodePath("Player")
@@ -235,9 +245,43 @@ tile_map_data = PackedByteArray("AAADAAEAAAAGAA0AAAAEAAEAAAAHAA0AAAAAAAAAAAADAAw
 tile_set = SubResource("TileSet_dbmeu")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=62987133]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_80nbo")
 
 [node name="Player" parent="." unique_id=197361324 instance=ExtResource("1_ebmjs")]
 position = Vector2(141, 279)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2011031836]
+
+[node name="ShieldBoss" parent="." unique_id=1342658842 instance=ExtResource("3_wrm1d")]
+position = Vector2(918, 559)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=827943436 node_paths=PackedStringArray("player", "enemy")]
+script = ExtResource("6_i6g32")
+player = NodePath("../Player")
+enemy = NodePath("../ShieldBoss")
+
+[node name="Control" type="Control" parent="HUD" unique_id=2020009669]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Player Health" type="Label" parent="HUD/Control" unique_id=1586848636]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_dbmeu")
+text = "Player Health: 100"
+label_settings = SubResource("LabelSettings_r3t11")
+
+[node name="Enemy Health" type="Label" parent="HUD/Control" unique_id=1461358509]
+layout_mode = 0
+offset_left = 255.0
+offset_top = -2.0
+offset_right = 295.0
+offset_bottom = 21.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1drwr")
+text = "Enemy Health: 100"
