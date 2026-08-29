@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bx3myinj2fqj7"
+path="res://.godot/imported/Optiks - Saviours Day Gameplay Loop.mp3-f7900009f91121feabb68e7f1bda59e2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Optiks - Saviours Day Gameplay Loop.mp3"
+dest_files=["res://.godot/imported/Optiks - Saviours Day Gameplay Loop.mp3-f7900009f91121feabb68e7f1bda59e2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -18,6 +18,7 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 DialogueManager="*uid://ejwdfvr3e1lo"
+GameManager="*uid://dmhj8o5eafwra"
 
 [display]
 
@@ -86,3 +87,4 @@ Sprint={
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/transparent_background=true

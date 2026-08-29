@@ -46,6 +46,7 @@ func _on_body_entered(body):
 			idkwhattocallititmakessureitdoesntinstantlygetdestroyed = true 
 	elif body.name == "Shield":
 		if !Returning:
+			GameManager.PlaySound("Shield")
 			Returning = true
 			$PathfindTimer.start()
 			_on_pathfind_timer_timeout()

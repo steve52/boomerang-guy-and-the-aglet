@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cepl707dlk4l6"
+path="res://.godot/imported/Hands of Zeus.mp3-3dd730bf3b00f58f8589a3a55d896a2f.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Hands of Zeus.mp3"
+dest_files=["res://.godot/imported/Hands of Zeus.mp3-3dd730bf3b00f58f8589a3a55d896a2f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

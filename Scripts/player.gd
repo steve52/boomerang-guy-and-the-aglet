@@ -58,6 +58,7 @@ func _physics_process(delta):
 
 func Attack():
 	if BoomerangsOut != 3:
+		GameManager.PlaySound("Shoot")
 		BoomerangsOut += 1
 		var Boomerang = BOOMERANG.instantiate()
 		get_parent().add_child(Boomerang)
@@ -67,13 +68,15 @@ func Attack():
 
 
 func Hit(_HitBy):
-	return
 	if !IFrames:
+		GameManager.PlaySound("Hurt")
 		Health -= 1
 		IFrames = true
 		if Health == 0:
-			get_tree().paused = true
+			GameManager.PlaySound("Death")
+			GameManager.PlayerDeath()
 			self.visible = false
 			print("Dead")
-		await get_tree().create_timer(.5).timeout
-		IFrames = false
+		else:
+			await get_tree().create_timer(.5).timeout
+			IFrames = false

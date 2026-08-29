@@ -20,8 +20,10 @@ func SpriteDirectionCheck():
 
 func TakeDamage(_Boomerang):
 	Health -= 1
+	GameManager.PlaySound("EnemyHurt")
 	if Health == 0:
 		if !CheckForPhaseChanges():
+			GameManager.PlaySound("EnemyDeath")
 			Die()
 
 func CheckForPhaseChanges():
@@ -36,9 +38,13 @@ func CheckForPhaseChanges():
 func ChangePhase():
 	pass
 
+func Spawn():
+	pass
+
 func Die():
 	DeathAnimation()
 	await DeathAnimation()
+	GameManager.EnemyKilled.emit()
 	queue_free()
 
 func DeathAnimation():

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://tig7jk7efdtb"
+path="res://.godot/imported/Optiks - Saviours Day Victory Loop_1.mp3-61702e05280496aba0e91687b3fecc6a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Optiks - Saviours Day Victory Loop_1.mp3"
+dest_files=["res://.godot/imported/Optiks - Saviours Day Victory Loop_1.mp3-61702e05280496aba0e91687b3fecc6a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://650eu2tab7kr"
+path="res://.godot/imported/Optiks Basic Synth Max.wav-2b7eb34f617de3576adaf18ebb758912.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/Optiks Basic Synth Max.wav"
+dest_files=["res://.godot/imported/Optiks Basic Synth Max.wav-2b7eb34f617de3576adaf18ebb758912.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

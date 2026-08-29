@@ -9,6 +9,7 @@ var AttackNumber = 0
 signal Phase2ChargeDone
 signal DashFinish
 
+
 func _ready():
 	super()
 	$AttackCooldown.start(3 + randf_range(-.5,.5))
@@ -52,7 +53,7 @@ func Attack():
 
 func BeforeCharge():
 	var tween = get_tree().create_tween()
-	var tilt = -15 if Player.position.x > position.x else 15
+	var tilt = rotation_degrees-15 if Player.position.x > position.x else rotation_degrees+15
 	tween.tween_property(self, "rotation_degrees", tilt, .5) 
 	await get_tree().create_timer(.7).timeout
 	if Phase == 1:
@@ -61,23 +62,15 @@ func BeforeCharge():
 		BeforePhase2Charge()
 
 func BeforePhase1Charge():
-	if Phase != 1:
-		$AttackCooldown.start(3 + randf_range(-.5,.5))
-		pass
 	for i in 16:
 		var BulletDirection = Vector2.from_angle(deg_to_rad(i*22.5))
 		ShootBullets(PHASE_1_CHARGE_RING_BULLETS, BulletDirection, position)
 	await get_tree().create_timer(.2).timeout
-	if Phase != 1:
-		$AttackCooldown.start(3 + randf_range(-.5,.5))
-		pass
 	for i in 16:
 		var BulletDirection = Vector2.from_angle(deg_to_rad(i*22.5 + 11.25))
 		ShootBullets(PHASE_1_CHARGE_RING_BULLETS, BulletDirection, position)
-	if Phase == 1:
-		Charge()
-	else:
-		$AttackCooldown.start(3 + randf_range(-.5,.5))
+	Charge()
+
 
 func BeforePhase2Charge():
 	for i in 2:
@@ -85,11 +78,6 @@ func BeforePhase2Charge():
 		await Phase2ChargeDone
 	$AttackCooldown.start(3.5 + randf_range(-.5,.5))
 
-func DuringCharge(ChargeTime):
-	if Phase == 1:
-		DuringPhase1Charge(ChargeTime)
-	else:
-		$AttackCooldown.start(3 + randf_range(-.5,.5))
 
 func DuringPhase1Charge(ChargeTime):
 	var TimeToShoot = ChargeTime/2
@@ -105,9 +93,6 @@ func AfterCharge():
 		AfterPhase2Charge()
 
 func AfterPhase1Charge():
-	if Phase != 1:
-		$AttackCooldown.start(3 + randf_range(-.5,.5))
-		pass
 	for i in 16:
 		var BulletDirection = Vector2.from_angle(deg_to_rad(i*22.5))
 		ShootBullets(PHASE_1_CHARGE_RING_BULLETS, BulletDirection, position)
@@ -121,7 +106,7 @@ func AfterPhase1Charge():
 func AfterPhase2Charge():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "rotation_degrees", 0, .2)
-	for i in 4:
+	for i in 3:
 		await get_tree().create_timer(.3).timeout
 		for I in 36:
 			var BulletDirection = Vector2.from_angle(deg_to_rad(I*10 + i*2))
@@ -129,17 +114,26 @@ func AfterPhase2Charge():
 	Phase2ChargeDone.emit()
 
 func ShieldBlast():
-	for i in 8:
+	for i in 6:
 		await get_tree().create_timer(.4).timeout
-		for I in 17:
+		for I in 15:
 			if Phase == 1:
 				
-				var BulletDirection = Vector2.from_angle(position.angle_to_point(Player.position) + (I - 8) * deg_to_rad(3))
+				var BulletDirection = Vector2.from_angle(position.angle_to_point(Player.position) + (I - 7) * deg_to_rad(3))
 				ShootBullets(SHIELD_BLAST_BULLETS,BulletDirection,$ShieldPivot/Shield.global_position)
-	$AttackCooldown.start(2 + randf_range(-.2,.2))
+	$AttackCooldown.start(3 + randf_range(-.2,.2))
 
 func RingsAttack():
-	for i in 4:
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "rotation_degrees", 180, .5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	await tween.finished
+	var tween2 = get_tree().create_tween()
+	tween2.tween_property(self, "rotation_degrees", 359, .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	await get_tree().create_timer(.3).timeout
+	rotation_degrees -= 179
+	rotation_degrees -= 90
+	rotation_degrees -= 90
+	for i in 3:
 		await get_tree().create_timer(.8).timeout
 		var SafeSpot = randi_range(31,40)
 		var SafeSpots = [SafeSpot,SafeSpot+1,SafeSpot-1]
@@ -155,19 +149,20 @@ func DashBarrage():
 	var Position2 = Direction[1] * 160 + position
 	Dash(Position2)
 	await DashFinish
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.3).timeout
 	Dash(Position1)
 	await DashFinish
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.3).timeout
 	Dash(Position2)
 	await DashFinish
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.3).timeout
 	Dash(Position1)
 	await DashFinish
-	await get_tree().create_timer(.2).timeout
+	await get_tree().create_timer(.3).timeout
 	Dash(Position2)
 	await DashFinish
-	$AttackCooldown.start(2 + randf_range(-.4,.4))
+	await get_tree().create_timer(.3).timeout
+	$AttackCooldown.start(2.5 + randf_range(0,.4))
 
 func DuringDash(DashTime):
 	var TimeToShoot = DashTime/20
