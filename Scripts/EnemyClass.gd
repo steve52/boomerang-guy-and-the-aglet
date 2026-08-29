@@ -7,6 +7,7 @@ var Phase = 1
 @export var ChargeDistance : float
 @export var Phases: int = 1
 @export var HealthPerPhase: Array
+var is_awake: bool = false
 
 func _ready():
 	Player = get_parent().Player

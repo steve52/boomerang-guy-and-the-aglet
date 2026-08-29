@@ -23,6 +23,11 @@ DialogueManager="*uid://ejwdfvr3e1lo"
 
 window/size/resizable=false
 
+[global_group]
+
+enemies=""
+player=""
+
 [input]
 
 Up={

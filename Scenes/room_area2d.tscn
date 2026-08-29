@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cx2vdbwupks4q"]
+
+[ext_resource type="Script" uid="uid://dute4vdvyj6xo" path="res://Scripts/room_area_2d.gd" id="1_dyttk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r3t11"]
+
+[sub_resource type="GDScript" id="GDScript_edsjq"]
+
+[node name="RoomArea2d" type="Area2D" unique_id=1095550340]
+collision_layer = 256
+collision_mask = 5
+script = ExtResource("1_dyttk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1580882112]
+shape = SubResource("RectangleShape2D_r3t11")
+script = SubResource("GDScript_edsjq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
