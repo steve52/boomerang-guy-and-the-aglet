@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://s25hmk1nqg1v" path="res://Assets/Audio/ShieldBlockSound.wav" id="11_o5yvi"]
 [ext_resource type="AudioStream" uid="uid://dmp0r80807u2" path="res://Assets/Audio/EnemyDeathSound.mp3" id="12_rku1e"]
 [ext_resource type="AudioStream" uid="uid://ba0yfeqwcwffi" path="res://Assets/Audio/ShootSound.wav" id="13_rfjv2"]
+[ext_resource type="Texture2D" uid="uid://bhvrwfwnyqbhe" path="res://Assets/SaveOrb.png" id="15_nb51f"]
 [ext_resource type="AudioStream" uid="uid://tig7jk7efdtb" path="res://Assets/Audio/Optiks - Saviours Day Victory Loop_1.mp3" id="15_nnt18"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_80nbo"]
@@ -73,6 +74,11 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dbmeu")
 text = "Player Health: 3"
 label_settings = SubResource("LabelSettings_r3t11")
 
+[node name="StartRoom" parent="." unique_id=2113555530 instance=ExtResource("6_1l0tm")]
+position = Vector2(498.00003, 449)
+scale = Vector2(46.373604, -38.807545)
+SaveRoom = true
+
 [node name="Room1" parent="." unique_id=1095550340 node_paths=PackedStringArray("Door") instance=ExtResource("6_1l0tm")]
 position = Vector2(2111, 436.99997)
 scale = Vector2(67.251175, 42.684135)
@@ -87,6 +93,11 @@ Door = NodePath("../Doors/Room 2")
 position = Vector2(4654, 1254)
 scale = Vector2(68.63829, 67.86557)
 Door = NodePath("../Doors/Room 3")
+
+[node name="ShieldBossSaveRoom" parent="." unique_id=1727492552 instance=ExtResource("6_1l0tm")]
+position = Vector2(3994, -527)
+scale = Vector2(45.617626, 30.442238)
+SaveRoom = true
 
 [node name="ShieldBossRoom" parent="." unique_id=365112666 node_paths=PackedStringArray("Door") instance=ExtResource("6_1l0tm")]
 position = Vector2(4047.0002, -1886)
@@ -190,3 +201,7 @@ pitch_scale = 1.5
 
 [node name="VictorySound" type="AudioStreamPlayer" parent="Audio" unique_id=1443341239]
 stream = ExtResource("15_nnt18")
+
+[node name="SaveOrb" type="Sprite2D" parent="." unique_id=408426309]
+position = Vector2(3998, -586)
+texture = ExtResource("15_nb51f")

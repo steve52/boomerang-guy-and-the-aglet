@@ -1,8 +1,11 @@
 extends Area2D
 
 @export var Door: TileMapLayer
+@export var SaveRoom = false
 var EnemyCount = 0
 var ActiveRoom = false
+var RoomUsed = false
+
 
 func _ready():
 	GameManager.EnemyKilled.connect(EnemyDeath)
@@ -12,16 +15,25 @@ func EnemyDeath():
 		EnemyCount-= 1
 		if EnemyCount == 0:
 			ActiveRoom = false
+			RoomUsed = true
 			Door.enabled = false
 
 func isEnemy(body: Node2D) -> bool:
 	return body is EnemySpawnPoint
 
 func _on_body_entered(body: Node2D) -> void:
-	if (body.is_in_group("player")):
-		Door.enabled = true
-		ActiveRoom = true
-		var enemy_spawn_points = get_overlapping_areas().filter(isEnemy)
-		for spawn_point in enemy_spawn_points:
-			EnemyCount += 1
-			spawn_point.spawn()
+	if (body.is_in_group("player")) and !RoomUsed:
+		if Door != null:
+			Door.enabled = true
+		if SaveRoom:
+			await get_tree().create_timer(.05).timeout
+			print(position)
+			print(GameManager.SaveSpot)
+			GameManager.SaveSpot = position
+			print(GameManager.SaveSpot)
+		else:
+			ActiveRoom = true
+			var enemy_spawn_points = get_overlapping_areas().filter(isEnemy)
+			for spawn_point in enemy_spawn_points:
+				EnemyCount += 1
+				spawn_point.spawn()

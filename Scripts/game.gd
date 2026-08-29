@@ -5,6 +5,10 @@ extends Node2D
 func _ready():
 	GameManager.game = self
 
+func Spawn(Spot):
+	$Player.position = Spot
+	
+
 func SoundEffect(Sound):
 	if Sound == "Hurt":
 		$Audio/HurtSound.play()
