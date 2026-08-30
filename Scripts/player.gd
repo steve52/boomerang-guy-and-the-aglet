@@ -12,6 +12,11 @@ var AttackCooldown = false
 
 func _physics_process(delta):
 	
+	if Input.is_action_just_pressed("Lol"):
+		Health = 1
+		GameManager.PlaySound("Death")
+		GameManager.PlayerDeath(1)
+	
 	if Input.is_action_pressed("Sprint"):
 		Speed = BaseSpeed* 1.5
 	else:
@@ -74,9 +79,8 @@ func Hit(_HitBy):
 		IFrames = true
 		if Health == 0:
 			GameManager.PlaySound("Death")
-			GameManager.PlayerDeath()
+			GameManager.PlayerDeath(0)
 			self.visible = false
-			print("Dead")
 		else:
 			await get_tree().create_timer(.5).timeout
 			IFrames = false

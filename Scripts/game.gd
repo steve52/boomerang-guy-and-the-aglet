@@ -22,3 +22,11 @@ func SoundEffect(Sound):
 		$Audio/EnemyHurtSound.play()
 	if Sound == "EnemyDeath":
 		$Audio/EnemyDeathSound.play()
+	if Sound == "Boss":
+		if !$Audio/BossMusic.playing:
+			$Audio/BossMusic.play()
+			$Audio/BackgroundMusic.stop()
+	if Sound == "Background":
+		if !$Audio/BackgroundMusic.playing:
+			$Audio/BossMusic.stop()
+			$Audio/BackgroundMusic.play()
