@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://dwgddpxnnmnhu"]
+
+[ext_resource type="Script" uid="uid://myobjk84vwd0" path="res://Scenes/start_screen.gd" id="1_i8r30"]
+
+[sub_resource type="FontFile" id="FontFile_i8r30"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/66/0/ascent = 0.0
+cache/0/66/0/descent = 0.0
+cache/0/66/0/underline_position = 0.0
+cache/0/66/0/underline_thickness = 0.0
+cache/0/66/0/scale = 1.0
+
+[node name="StartScreen" type="Control" unique_id=354807508]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i8r30")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=2131940693]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 156.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = SubResource("FontFile_i8r30")
+theme_override_font_sizes/normal_font_size = 66
+text = "Boomerang Guy and the Aglet"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=592545497]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.36728394
+anchor_right = 0.5
+anchor_bottom = 0.36728394
+offset_left = -146.5
+offset_top = -71.0
+offset_right = 146.5
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=1406891452]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Start"
+
+[node name="Quit" type="Button" parent="VBoxContainer" unique_id=634045999]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Quit"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=139401853]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 256.0
+offset_right = 321.0
+offset_bottom = 471.0
+bbcode_enabled = true
+text = "CONTROLS:
+
+Up: W
+Left: A
+Down: S
+Right: D
+Sprint: Hold Shift
+
+Attack: Mouse Click"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1668544392]
+layout_mode = 0
+offset_left = 772.0
+offset_top = 231.0
+offset_right = 1097.0
+offset_bottom = 505.0
+bbcode_enabled = true
+text = "WARNING:
+
+According to our lawyers, we have to tell you....that whatever you do....
+
+DO NOT PRESS ctrl+R!
+
+You've officially been warned"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=934096495]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 333.0
+offset_right = 756.0
+offset_bottom = 643.0
+bbcode_enabled = true
+text = "Quest:
+
+You have heard stories about the power of the Aglet for years and finally you heared a rumor of where it can be found. 
+
+You're not the only one looking for it though. Perhaps someone you know, even a close trusted friend is also on the trail. 
+
+Who will get it first and who can wield the power... of the Aglet?"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
