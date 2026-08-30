@@ -12,13 +12,25 @@ var AttackNumber = 0
 
 func _ready():
 	super()
+	if !GameManager.BoomerangBossAttempted:
+		DialogueManager.start_dialogue("boomerang_boss_start")
+	GameManager.BoomerangBossAttempted = true
 	$AttackTimer.start(2 + randf_range(-.5,.5))
+
+func DeathAnimation():
+	DialogueManager.start_dialogue("boomerang_boss_end")
+	return
 
 func SpriteDirectionCheck():
 	$Icon.animation = "Back" if position.y > Player.position.y else "Front"
 
 func ChangePhase():
 	$AttackTimer.paused = true
+	if !GameManager.BoomerangBossPhase2Attempted:
+		DialogueManager.start_dialogue("boomerang_boss_phase_2")
+	else:
+		DialogueManager.start_dialogue("boomerang_boss_phase_2_attempted")
+	GameManager.BoomerangBossPhase2Attempted = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(self,"global_scale", Vector2(1.5,1.5), .4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_LINEAR)
 	await tween.finished
@@ -93,7 +105,7 @@ func Phase2BoomerangBarrage():
 	await tween.finished
 	var tween2 = get_tree().create_tween()
 	tween2.tween_property(self, "rotation_degrees", 360, .5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	for i in 8:
+	for i in 7:
 		var Boomerang = EVIL_BOOMERANG_BARRAGE.instantiate()
 		var direction = Vector2.from_angle(randf_range(-1*PI,PI))
 		var StartPosition = position
@@ -109,10 +121,10 @@ func Phase2BoomerangBarrage():
 
 func BoomerangRing(Boomerang):
 	await Boomerang.TweenFinished
-	var Rotation = randf_range(3, 12)
+	var Rotation = randf_range(3, 18)
 	for i in 2:
 		for I in 12:
-			var direction = Vector2.from_angle(deg_to_rad(I*30+Rotation*i))
+			var direction = Vector2.from_angle(deg_to_rad(I*36+Rotation*i))
 			ShootBullets(BOOMERANG_BARRAGE_BULLETS,direction,Boomerang.position)
 		await get_tree().create_timer(.5).timeout
 	Boomerang.Returning = true

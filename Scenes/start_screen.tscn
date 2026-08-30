@@ -69,12 +69,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=139401853]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/Quit" unique_id=139401853]
 layout_mode = 0
-offset_left = 127.0
-offset_top = 256.0
-offset_right = 321.0
-offset_bottom = 471.0
+offset_left = -302.5
+offset_top = 16.0
+offset_right = -108.5
+offset_bottom = 231.0
 bbcode_enabled = true
 text = "CONTROLS:
 
@@ -86,35 +86,36 @@ Sprint: Hold Shift
 
 Attack: Mouse Click"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=1668544392]
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/Quit" unique_id=1668544392]
 layout_mode = 0
-offset_left = 772.0
-offset_top = 231.0
-offset_right = 1097.0
-offset_bottom = 505.0
+offset_left = 342.5
+offset_top = -9.0
+offset_right = 667.5
+offset_bottom = 265.0
 bbcode_enabled = true
 text = "WARNING:
 
 According to our lawyers, we have to tell you....that whatever you do....
 
 DO NOT PRESS ctrl+R!
+(After pressing start)
 
 You've officially been warned"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=934096495]
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/Quit" unique_id=934096495]
 layout_mode = 0
-offset_left = 337.0
-offset_top = 333.0
-offset_right = 756.0
-offset_bottom = 643.0
+offset_left = -92.5
+offset_top = 93.0
+offset_right = 326.5
+offset_bottom = 403.0
 bbcode_enabled = true
 text = "Quest:
 
-You have heard stories about the power of the Aglet for years and finally you heared a rumor of where it can be found. 
+You have heard stories about the power of the Aglet for years and finally you heard a rumor of where it can be found. 
 
 You're not the only one looking for it though. Perhaps someone you know, even a close trusted friend is also on the trail. 
 
-Who will get it first and who can wield the power... of the Aglet?"
+Who will get it first and who can wield the power of the Aglet... or destroy it?"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

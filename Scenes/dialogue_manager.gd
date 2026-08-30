@@ -9,7 +9,7 @@ var dialogue_lines: Array = []
 var current_line_index: int = 0
 var is_dialogue_active: bool = false
 var dialogue = {}
-
+signal DialogueFinished
 
 func _ready() -> void:
 	
@@ -28,7 +28,9 @@ func start_dialogue(dialogue_section: String):
 	dialogue_box.visible = true
 	var obj = dialogue_lines[current_line_index]
 	dialogue_text.text = obj["speaker"] + ": " + obj["text"]
-	
+	await DialogueFinished
+	if dialogue_section == "boomerang_boss_end":
+		GameManager.EndGame()
 func _input(event):
 	if not is_dialogue_active:
 		return
@@ -42,6 +44,7 @@ func advance_dialogue():
 		var obj = dialogue_lines[current_line_index]
 		dialogue_text.text = obj["speaker"] + ": " + obj["text"]
 	else:
+		DialogueFinished.emit()
 		get_tree().paused = false
 		is_dialogue_active = false
 		dialogue_box.visible = false

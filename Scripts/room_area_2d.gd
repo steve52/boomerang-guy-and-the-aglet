@@ -34,6 +34,7 @@ func _on_body_entered(body: Node2D) -> void:
 			await get_tree().create_timer(.05).timeout
 			GameManager.Save(self)
 		else:
+			RoomUsed = true
 			ActiveRoom = true
 			var enemy_spawn_points = get_overlapping_areas().filter(isEnemy)
 			for spawn_point in enemy_spawn_points:

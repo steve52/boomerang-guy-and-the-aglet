@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bw7nw5d3dfpai"]
+
+[ext_resource type="Script" uid="uid://d4gdlmd2i1xs7" path="res://end_screen.gd" id="1_my301"]
+[ext_resource type="AudioStream" uid="uid://tig7jk7efdtb" path="res://Assets/Audio/Optiks - Saviours Day Victory Loop_1.mp3" id="2_abjgy"]
+
+[node name="EndScreen" type="Control" unique_id=1046283237]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_my301")
+
+[node name="Label" type="Label" parent="." unique_id=865329148]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.0
+offset_top = -11.5
+offset_right = 214.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congrats! You destroyed the Aglet and saved the world!"
+
+[node name="Button" type="Button" parent="." unique_id=1468110838]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = 41.0
+offset_right = 46.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MainMenu"
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="." unique_id=139601943]
+stream = ExtResource("2_abjgy")
+
+[node name="DeathLabel" type="Label" parent="." unique_id=68899385]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -51.0
+offset_right = 24.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

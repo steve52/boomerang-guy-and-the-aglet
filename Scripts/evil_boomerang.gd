@@ -22,7 +22,12 @@ func _ready():
 
 
 func _on_body_entered(body):
-	if body.name == "BoomerangBoss":
+	var Boss = false
+	for i in body.get_children():
+		if i.name == "AttackTimer":
+			Boss = true
+	
+	if Boss:
 		if idkwhattocallititmakessureitdoesntinstantlygetdestroyed:
 			queue_free()
 		else:

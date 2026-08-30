@@ -7,7 +7,10 @@ func _ready():
 
 func Spawn(Spot):
 	$Player.position = Spot
-	
+
+func Heal():
+	Player.Health = 4
+	Player.Hit(null)
 
 func SoundEffect(Sound):
 	if Sound == "Hurt":

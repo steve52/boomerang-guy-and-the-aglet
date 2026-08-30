@@ -12,7 +12,14 @@ signal DashFinish
 
 func _ready():
 	super()
+	if !GameManager.ShieldBossAttempted:
+		DialogueManager.start_dialogue("shield_boss_start")
+	GameManager.ShieldBossAttempted = true
 	$AttackCooldown.start(3 + randf_range(-.5,.5))
+
+func DeathAnimation():
+	DialogueManager.start_dialogue("shield_boss_end")
+	return
 
 func _physics_process(delta):
 	super(delta)
@@ -27,7 +34,11 @@ func MoveShield():
 func ChangePhase():
 	print("Phase: " + str(Phase))
 	if (Phase == 2):
-		DialogueManager.start_dialogue("shield_boss_phase_2")
+		if !GameManager.ShieldBossPhase2Attempted:
+			DialogueManager.start_dialogue("shield_boss_phase_2")
+		else:
+			DialogueManager.start_dialogue("shield_boss_phase_2_attempted")
+		GameManager.ShieldBossPhase2Attempted = true
 	$ShieldPivot.queue_free()
 	AttackNumber = 0
 

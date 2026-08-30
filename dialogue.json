@@ -1,9 +1,25 @@
 {
+	"shield_boss_start": [
+		{
+			"speaker": "Boomer",
+			"text": "Shield Boss? How's it going friend?"},
+		{
+			"speaker": "Shield Boss",
+			"text": "Hello Boomer. I just found this neat little Aglet lying around. What do you think?"},
+		{
+			"speaker": "Boomer",
+			"text": "You found the Aglet? Great! Lets get out of here."},
+		{
+			"speaker": "Shield Boss",
+			"text": "And what, let you destroy it? I don't think so. It's about time for you to be dealt with."},
+		{
+			"speaker": "Shield Boss",
+			"text": "En Garde!"}
+	],
 	"shield_boss_phase_2": [		
 		{
 			"speaker": "Shield Boss", 
-			"text": "You have worn me down and completed phase one of my attacks."
-		}, 
+			"text": "You have worn me down and completed phase one of my attacks."}, 
 		{
 			"speaker": "Boomer", 
 			"text": "Shield Boss, my old friend! I trusted you. How could you do this?!"},
@@ -19,5 +35,66 @@
 		{
 			"speaker": "Shield Boss", 
 			"text": "SIKE! You can TRUST NO ONE!"}
+	],
+	"shield_boss_phase_2_attempted": [		
+		{
+			"speaker": "Shield Boss", 
+			"text": "You have worn me down and completed phase one of my attacks."}
+	],
+	"shield_boss_end": [
+		{
+			"speaker": "Boomer", 
+			"text": "Sorry friend, you made me do this"}, 
+		{
+			"speaker": "Boomer", 
+			"text": "Wait, where did the Aglet go?"}, 
+		{
+			"speaker": "Boomer", 
+			"text": "Dammit I lost it!"}, 
+		
+	],
+	"boomerang_boss_start": [
+		{
+			"speaker": "Boomer",
+			"text": "Finally the Aglet! Now I can get all that I've ever wanted."},
+		{
+			"speaker": "Boomer",
+			"text": "Wait no... I'm doing this to protect people."},
+		{
+			"speaker": "Boomer",
+			"text": "But this Power..."},
+		{
+			"speaker": "Boomer",
+			"text": "No!"},
+	],
+	"boomerang_boss_phase_2": [
+		{
+			"speaker": "Corrupted Boomer",
+			"text": "Accept the power! It is everything you've ever wanted."},
+		{
+			"speaker": "Boomer",
+			"text": "No, I only want peace. No way am I using this power. I'm going to destroy it like I set out to do."},
+		{
+			"speaker": "Corrupted Boomer",
+			"text": "Then you DIE!!!"},
+	],
+	"boomerang_boss_phase_2_attempted": [
+		{
+			"speaker": "Corrupted Boomer",
+			"text": "Accept the power! It is everything you've ever wanted."}
+	],
+	"boomerang_boss_end": [
+		{
+			"speaker": "Boomer",
+			"text": "Is it over?"},
+		{
+			"speaker": "Boomer",
+			"text": "I think it's over"},
+		{
+			"speaker": "Boomer",
+			"text": "I guess in the end I could *looks at camera* TRUST NO ONE."},
+		{
+			"speaker": "Boomer",
+			"text": "Welp, time to destroy it like I set out to do."},
 	]
 }

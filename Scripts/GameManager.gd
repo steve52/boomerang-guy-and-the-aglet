@@ -1,16 +1,30 @@
 extends Node
 
+
 signal EnemyKilled
 var game
 var Deaths = 0
 var SaveSpot
+var ShieldBossAttempted = false
+var ShieldBossPhase2Attempted = false
+var BoomerangBossAttempted = false
+var BoomerangBossPhase2Attempted = false
 
 func PlaySound(Sound):
 	game.SoundEffect(Sound)
 
+func EndGame():
+	get_tree().change_scene_to_file("res://end_screen.tscn")
+
+
+
+func Restart():
+	get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
+
 func Save(Room):
 	if Room.name != "StartRoom":
 		if Room.position != SaveSpot:
+			await get_tree().create_timer(0.05).timeout
 			for i in game.get_children():
 				if i.name == "HUD":
 					i.get_child(0).get_child(0).visible = true
@@ -20,6 +34,7 @@ func Save(Room):
 	else:
 		if Room.position != SaveSpot:
 			SaveSpot = Room.position
+	game.Heal()
 
 func PlayerDeath(Type):
 	if Type == 0:
